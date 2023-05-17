@@ -1,0 +1,127 @@
+@use '../utils/mixin' as mixin;
+@use "../utils/variables" as var;
+
+header {
+  background-color: var.$black;
+  .contact {
+    @include mixin.nav-btn;
+  }
+}
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var.$black;
+    z-index: 1000;
+  }
+  
+  ul {
+    list-style: none;   
+  } 
+
+  a {
+    text-decoration: none;
+  }
+
+  .navbar {
+    padding: 12px 0;
+    display: grid;
+    grid-template-columns: 1fr 4fr;    
+    align-items: center;
+    column-gap: 40px;
+    transition: 0.6s;
+  }
+  
+  #navbar-responsive {
+    transition: 0.8s;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  } 
+  .nav-items {
+    display: flex;
+    gap: 40px;
+    .nav-item {
+      a{
+        font-family: 'Roboto Condensed';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px; 
+        text-align: right;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        opacity: 0.9;
+      }
+      a:hover {
+          color: #F67E7E;
+      }
+    }
+  }
+
+  .close {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: none;
+
+    & img {
+      width: 32px;
+    }
+  }
+
+.hamburger {
+  display: none;
+  margin-top: -3px;
+  text-align: end;
+  border: none;
+  background-color: transparent;
+
+  & img {
+    width: 32px;
+  }
+}
+  
+
+@media (max-width: 800px){
+  .navbar {
+    padding: 30px 0;
+  }
+
+  #navbar-responsive {
+      background: url(../../images/home/navbar-responsive.png) no-repeat 100% 100%;
+      background-color: var.$black;
+      opacity: 1 !important;
+  }
+
+  .nav-right {
+      position: fixed;
+      top: 0; 
+      right: -100%;
+      bottom: 0;
+      height: 100%;
+      width: 65%;
+      flex-direction: column;
+      justify-content: center;
+  }
+
+  .nav-items {
+      margin-top: -250px;
+      margin-left: -100px;
+      margin-bottom: 36px;
+      flex-direction: column;
+      gap: 24px;
+  }
+  
+  .hamburger, .close {
+      display: block;
+  }
+}
